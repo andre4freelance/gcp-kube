@@ -1,0 +1,14 @@
+# orchestrate-with-kubernetes/kubernetes/services/fortune-app.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: "fortune-app"
+spec:
+  selector:
+    # This selector will grab pods from both blue and canary deployments
+    app: "fortune-app"
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

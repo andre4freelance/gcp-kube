@@ -1,0 +1,14 @@
+# orchestrate-with-kubernetes/kubernetes/services/fortune-app-blue-service.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: "fortune-app"
+spec:
+  selector:
+    app: "fortune-app"
+    version: "1.0.0" # Points only to blue
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

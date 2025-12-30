@@ -1,0 +1,31 @@
+# orchestrate-with-kubernetes/kubernetes/deployments/fortune-app-canary.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fortune-app-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fortune-app
+  template:
+    metadata:
+      labels:
+        app: fortune-app
+        track: canary # The track is 'canary'
+        version: "2.0.0"
+    spec:
+      containers:
+        - name: fortune-app
+          # The new, centralized image path for v2.0.0
+          image: "us-central1-docker.pkg.dev/qwiklabs-resources/spl-lab-apps/fortune-service:2.0.0"
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: APP_VERSION
+              value: "2.0.0"
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: "20Mi"

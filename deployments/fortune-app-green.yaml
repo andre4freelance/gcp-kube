@@ -1,0 +1,37 @@
+# orchestrate-with-kubernetes/kubernetes/deployments/fortune-app-green.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fortune-app-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fortune-app
+  template:
+    metadata:
+      labels:
+        app: fortune-app
+        track: stable
+        version: "2.0.0"
+    spec:
+      containers:
+        - name: fortune-app
+          # The new, centralized image path for v2.0.0
+          image: "us-central1-docker.pkg.dev/qwiklabs-resources/spl-lab-apps/fortune-service:2.0.0"
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: APP_VERSION
+              value: "2.0.0"
+          resources:
+            limits:
+              cpu: "0.2"
+              memory: "20Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
