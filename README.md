@@ -141,11 +141,9 @@ kubectl get replicasets
 kubectl get pods
 ```
 
-![Deployment creation](images/03-deployment-creation.png)
-
 Kubernetes creates a ReplicaSet to manage the pods, ensuring 3 replicas are always running.
 
-![Deployment pods running](images/04-deployment-pods-running.png)
+![Deployment pods running](images/03-deployment-pods-running.png)
 
 ---
 
@@ -159,14 +157,12 @@ kubectl create -f services/fortune-app.yaml
 kubectl get services fortune-app
 ```
 
-![Service exposed with external IP](images/05-service-exposed-external-ip.png)
-
 **Verifying the application endpoint:**
 ```bash
 curl http://<EXTERNAL-IP>/version
 ```
 
-![Version endpoint response](images/06-version-endpoint-response.png)
+![Version endpoint response](images/04-version-endpoint-response.png)
 
 The application responds with `{"version":"1.0.0"}`, confirming the deployment is operational.
 
