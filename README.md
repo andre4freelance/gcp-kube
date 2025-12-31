@@ -184,7 +184,7 @@ kubectl get pods | grep fortune-app-blue | wc -l
 kubectl scale deployment fortune-app-blue --replicas=3
 ```
 
-![Scaling deployment replicas](images/07-scaling-deployment-replicas.png)
+![Scaling deployment replicas](images/05-scaling-deployment-replicas.png)
 
 ---
 
@@ -201,15 +201,14 @@ Changes made:
 - Updated image tag from `1.0.0` to `2.0.0`
 - Updated `APP_VERSION` environment variable from `1.0.0` to `2.0.0`
 
-![Rolling update edit](images/08-rolling-update-edit.png)
+![Rolling update edit](images/06-rolling-update-edit.png)
 
 **Observing the rollout:**
 ```bash
 kubectl get replicaset
 kubectl rollout history deployment/fortune-app-blue
 ```
-
-![Rolling update replicasets](images/09-rolling-update-replicasets.png)
+---
 
 #### Pause and Resume Rollout
 
@@ -226,8 +225,6 @@ kubectl rollout status deployment/fortune-app-blue
 kubectl rollout resume deployment/fortune-app-blue
 ```
 
-![Rollout pause and resume](images/10-rollout-pause-resume.png)
-
 #### Rollback
 
 If issues are detected, Kubernetes can instantly roll back to the previous version.
@@ -236,8 +233,6 @@ If issues are detected, Kubernetes can instantly roll back to the previous versi
 kubectl rollout undo deployment/fortune-app-blue
 curl http://<EXTERNAL-IP>/version
 ```
-
-![Rollback undo](images/11-rollback-undo.png)
 
 ---
 
@@ -270,7 +265,7 @@ kubectl create -f deployments/fortune-app-canary.yaml
 kubectl get deployments
 ```
 
-![Canary deployment created](images/12-canary-deployment-created.png)
+![Canary deployment](images/07-canary-deployment.png)
 
 **Verifying canary traffic distribution:**
 ```bash
@@ -281,8 +276,6 @@ done
 ```
 
 With 3 blue pods (v1.0.0) and 1 canary pod (v2.0.0), approximately 25% of traffic goes to the new version.
-
-![Canary version verification](images/13-canary-version-verification.png)
 
 ---
 
@@ -300,7 +293,6 @@ kubectl apply -f services/fortune-app-blue-service.yaml
 kubectl create -f deployments/fortune-app-green.yaml
 ```
 
-![Blue-green deployment](images/14-blue-green-deployment.png)
 
 **Step 3: Switch traffic to green**
 ```bash
@@ -308,12 +300,11 @@ kubectl apply -f services/fortune-app-green-service.yaml
 curl http://<EXTERNAL-IP>/version
 ```
 
-![Blue-green switch](images/15-blue-green-switch.png)
-
 **Rollback (if needed):**
 ```bash
 kubectl apply -f services/fortune-app-blue-service.yaml
 ```
+![Blue-green switch](images/08-blue-green-switch.png)
 
 ---
 
@@ -321,7 +312,7 @@ kubectl apply -f services/fortune-app-blue-service.yaml
 
 All lab objectives were successfully completed, including cluster creation, deployment management, scaling, rolling updates, canary deployments, and blue-green deployments.
 
-![Lab completed](images/16-lab-completed.png)
+![Lab completed](images/09-lab-completed.png)
 
 ---
 
