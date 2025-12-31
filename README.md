@@ -343,3 +343,13 @@ This lab provided hands-on experience with several critical Kubernetes deploymen
 - ✅ Canary deployment strategy implementation
 - ✅ Blue-green deployment pattern implementation
 - ✅ kubectl command-line proficiency
+
+## Links
+
+Origin : 
+<https://github.com/andre4freelance/gcp-kube>
+
+Linkedin post : 
+<https://www.linkedin.com/posts/link-andre-bastian_devops-kubernetes-cloudcomputing-activity-7412070526208372736-GpTj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD73JlUBty-p-mBfMEW0-O4j0sv-e_PRQvc>
+
+Facebook post : 
